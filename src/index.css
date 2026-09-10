@@ -11,6 +11,9 @@
 
 body {
   font-family: "Red Hat Text", sans-serif;
+  font-weight: 500;
+  margin: 0;
+  background-color: var(--rose-50);
 }
 
 * {
