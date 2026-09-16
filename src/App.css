@@ -1,3 +1,12 @@
-.product-feed {
+.home {
   padding: 1rem;
+  @media (width >= 1000px) {
+    padding: 2.5rem;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    .product-feed {
+      flex: 1;
+    }
+  }
 }

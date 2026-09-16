@@ -1,6 +1,10 @@
 import "./Products.css";
-import { useData } from "../lib/useData";
-import type { Product } from "../lib/types";
+import { useData } from "../useData";
+import type { Product } from "../types";
+import cartIcon from "../assets/icon-add-to-cart.svg";
+import incrementIcon from "../assets/icon-increment-quantity.svg";
+import decrementtIcon from "../assets/icon-decrement-quantity.svg";
+import { useCart } from "../CartContext";
 
 export default function Products() {
   const data = useData<Product>(import.meta.env.BASE_URL + "data.json");
@@ -18,6 +22,60 @@ export default function Products() {
 }
 
 export function ProductCard({ product }: { product: Product }) {
+  const [cartData, setCartData] = useCart();
+  const added =
+    !cartData || !Object.hasOwn(cartData, product.name) ? false : true;
+  const cartBtn = added ? (
+    <div className="product-cart__btn" data-added="true">
+      <button
+        className="product-cart__quantity-btn"
+        onClick={handleCartremove}
+        aria-label="Decrement quantity"
+      >
+        <img src={decrementtIcon} alt="" />
+      </button>
+      <span>{cartData![product.name].count}</span>
+      <button
+        className="product-cart__quantity-btn"
+        onClick={handleCartAdd}
+        aria-label="Increment quantity"
+      >
+        <img src={incrementIcon} alt="" />
+      </button>
+    </div>
+  ) : (
+    <button className="product-cart__btn" onClick={handleCartAdd}>
+      <img src={cartIcon} alt="" />
+      Add to Cart
+    </button>
+  );
+  function handleCartAdd() {
+    if (!added) {
+      setCartData({
+        ...cartData,
+        [product.name]: {
+          product: product,
+          count: 1,
+        },
+      });
+    } else {
+      setCartData({
+        ...cartData,
+        [product.name]: {
+          product: product,
+          count: cartData![product.name].count + 1,
+        },
+      });
+    }
+  }
+  function handleCartremove() {
+    const newData = { ...cartData };
+    newData[product.name].count -= 1;
+    if (newData[product.name].count == 0) {
+      delete newData[product.name];
+    }
+    setCartData(newData);
+  }
   return (
     <div className="product-card">
       <picture>
@@ -32,16 +90,11 @@ export function ProductCard({ product }: { product: Product }) {
         <img
           src={import.meta.env.BASE_URL + product.image.mobile}
           alt=""
-          className="product-card__img"
+          className="product-cart__img"
+          data-added={added}
         />
       </picture>
-      <button className="product-card__btn">
-        <img
-          src={`${import.meta.env.BASE_URL}assets/images/icon-add-to-cart.svg`}
-          alt=""
-        />
-        Add to Cart
-      </button>
+      {cartBtn}
       <div className="product-card__info">
         <p className="product-card__category">{product.category}</p>
         <p className="product-card__name">{product.name}</p>

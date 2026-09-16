@@ -1,0 +1,7 @@
+.empty-cart {
+  display: grid;
+  justify-items: center;
+}
+.empty-cart__txt {
+  color: var(--rose-500);
+}
