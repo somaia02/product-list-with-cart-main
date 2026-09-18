@@ -4,7 +4,7 @@ import treeIcon from "../assets/icon-carbon-neutral.svg";
 import removeIcon from "../assets/icon-remove-item.svg";
 import { useCart } from "../CartContext";
 
-export default function FilledCart() {
+export default function FilledCart({ dialogId }: { dialogId: string }) {
   const [cartData, _] = useCart();
   let bill = 0;
   const products = [];
@@ -29,7 +29,13 @@ export default function FilledCart() {
           This is a <strong>carbon-neutral</strong> delivery
         </p>
       </div>
-      <button className="cart__confirm-btn">Confirm Order</button>
+      <button
+        className="cart__confirm-btn"
+        command="show-modal"
+        commandfor={dialogId}
+      >
+        Confirm Order
+      </button>
     </>
   );
 }

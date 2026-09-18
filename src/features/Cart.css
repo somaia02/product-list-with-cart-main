@@ -13,3 +13,36 @@
   font-size: 1.5rem;
   margin-block: 0.5rem 2rem;
 }
+
+/* Shared between confirmation and filled cart */
+ul {
+  padding: 0;
+  margin: 0;
+  span {
+    margin-inline-end: 0.75rem;
+  }
+}
+li {
+  padding: 1rem 0;
+  list-style: none;
+}
+.cart__product__name {
+  margin-block: 0 0.5rem;
+  font-weight: 600;
+}
+.cart__product__count {
+  color: var(--red);
+}
+.cart__product__item-price {
+  color: var(--rose-300);
+}
+.cart__total-bill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1.5rem 1rem;
+}
+.cart__total-bill__val {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
