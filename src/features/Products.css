@@ -34,6 +34,10 @@
   justify-content: center;
   align-items: center;
 
+  &:hover {
+    color: var(--red);
+  }
+
   &[data-added="true"] {
     background-color: var(--red);
     border-color: var(--red);
@@ -48,6 +52,14 @@
   border: white solid 1px;
   background-color: transparent;
   color: white;
+
+  display: grid;
+  place-content: center;
+
+  &:hover {
+    background-color: white;
+    color: var(--red);
+  }
 }
 .product-card__info {
   margin-block: 2rem 1rem;

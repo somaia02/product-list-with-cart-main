@@ -10,9 +10,15 @@
 .cart__product__clear-btn {
   background-color: transparent;
   border: var(--rose-400) solid 1px;
+  color: var(--rose-400);
   border-radius: 50%;
   aspect-ratio: 1;
   align-self: center;
+
+  &:hover {
+    border-color: black;
+    color: black;
+  }
 }
 .cart__carbon-neutral-note {
   display: flex;
@@ -33,4 +39,8 @@
   font-weight: 500;
   color: white;
   width: 100%;
+
+  &:hover {
+    background-color: hsl(from var(--red) h s calc(l * 0.8));
+  }
 }

@@ -1,10 +1,9 @@
-import "./Products.css";
 import { useData } from "../useData";
 import type { Product } from "../types";
-import cartIcon from "../assets/icon-add-to-cart.svg";
-import incrementIcon from "../assets/icon-increment-quantity.svg";
-import decrementtIcon from "../assets/icon-decrement-quantity.svg";
 import { useCart } from "../CartContext";
+import { IncrementIcon, DecrementIcon } from "../icons";
+import cartIcon from "../assets/icon-add-to-cart.svg";
+import "./Products.css";
 
 export default function Products() {
   const data = useData<Product>(import.meta.env.BASE_URL + "data.json");
@@ -32,7 +31,7 @@ export function ProductCard({ product }: { product: Product }) {
         onClick={handleCartremove}
         aria-label="Decrement quantity"
       >
-        <img src={decrementtIcon} alt="" />
+        <DecrementIcon />
       </button>
       <span>{cartData![product.name].count}</span>
       <button
@@ -40,7 +39,7 @@ export function ProductCard({ product }: { product: Product }) {
         onClick={handleCartAdd}
         aria-label="Increment quantity"
       >
-        <img src={incrementIcon} alt="" />
+        <IncrementIcon />
       </button>
     </div>
   ) : (

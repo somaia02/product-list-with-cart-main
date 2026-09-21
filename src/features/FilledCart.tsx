@@ -1,8 +1,8 @@
 import type { Product } from "../types";
-import "./FilledCart.css";
-import treeIcon from "../assets/icon-carbon-neutral.svg";
-import removeIcon from "../assets/icon-remove-item.svg";
 import { useCart } from "../CartContext";
+import { RemoveIcon } from "../icons";
+import treeIcon from "../assets/icon-carbon-neutral.svg";
+import "./FilledCart.css";
 
 export default function FilledCart({ dialogId }: { dialogId: string }) {
   const [cartData, _] = useCart();
@@ -64,7 +64,7 @@ function CartProduct({ product, count }: { product: Product; count: number }) {
         aria-label="Remove product"
         onClick={handleCartremove}
       >
-        <img src={removeIcon} alt="" />
+        <RemoveIcon />
       </button>
     </li>
   );
