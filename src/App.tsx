@@ -10,13 +10,13 @@ function App() {
 
   return (
     <CartContext value={[cartData, setCartData]}>
-      <div className="home">
+      <main className="home">
         <div className="product-feed">
           <h1>Desserts</h1>
           <Products />
         </div>
         <Cart />
-      </div>
+      </main>
     </CartContext>
   );
 }
